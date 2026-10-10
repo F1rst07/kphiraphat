@@ -290,9 +290,15 @@ blockquote,
   align-items: center;
 }
 
+.hero-banner-container picture {
+  display: block;
+  width: 100%;
+}
+
 .hero-banner-img {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
   display: block;
   object-fit: contain;
 }
