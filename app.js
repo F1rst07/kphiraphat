@@ -623,17 +623,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -----------------------------------------------------------
-     GOOGLE SITES IFRAME RESPONSIVE RESIZER COMMUNICATION
+     GOOGLE SITES IFRAME RESPONSIVE RESIZER COMMUNICATION (DEBOUNCED)
      ----------------------------------------------------------- */
+  let resizeTimer = null;
   function notifyParentIframe() {
     if (window.parent && window.parent !== window) {
-      const height = document.documentElement.scrollHeight;
-      window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+      if (resizeTimer) cancelAnimationFrame(resizeTimer);
+      resizeTimer = requestAnimationFrame(() => {
+        const height = document.documentElement.scrollHeight;
+        window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+      });
     }
   }
 
   /* -----------------------------------------------------------
-     SCROLL REVEAL & DYNAMIC ANIMATIONS (อนิเมชันขยับได้)
+     SCROLL REVEAL & DYNAMIC ANIMATIONS (HARDWARE ACCELERATED)
      ----------------------------------------------------------- */
   function initScrollAnimations() {
     const targets = document.querySelectorAll(
@@ -655,8 +659,8 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.05,
+        rootMargin: '50px 0px 50px 0px'
       });
 
       targets.forEach(el => observer.observe(el));
@@ -668,27 +672,42 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
 
   /* -----------------------------------------------------------
-     INTERACTIVE CARD 3D TILT EFFECT
+     INTERACTIVE CARD 3D TILT EFFECT (DESKTOP MOUSE ONLY)
      ----------------------------------------------------------- */
-  document.querySelectorAll('.dimension-article-card, .pedagogy-card, .pioneer-full-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -2.5;
-      const rotateY = ((x - centerX) / centerX) * 2.5;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.008)`;
-    });
+  const isFinePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (isFinePointer) {
+    document.querySelectorAll('.dimension-article-card, .pedagogy-card, .pioneer-full-card').forEach(card => {
+      let tiltRaf = null;
+      card.addEventListener('mousemove', (e) => {
+        if (tiltRaf) cancelAnimationFrame(tiltRaf);
+        tiltRaf = requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -2.5;
+          const rotateY = ((x - centerX) / centerX) * 2.5;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.008)`;
+        });
+      }, { passive: true });
 
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
+      card.addEventListener('mouseleave', () => {
+        if (tiltRaf) cancelAnimationFrame(tiltRaf);
+        card.style.transform = '';
+      });
     });
-  });
+  }
 
-  window.addEventListener('resize', notifyParentIframe);
-  window.addEventListener('load', notifyParentIframe);
-  const observer = new MutationObserver(notifyParentIframe);
-  observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+  // Efficient window resize and initial load notifications
+  window.addEventListener('resize', notifyParentIframe, { passive: true });
+  window.addEventListener('load', notifyParentIframe, { passive: true });
+
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(notifyParentIframe);
+    ro.observe(document.body);
+  } else {
+    setTimeout(notifyParentIframe, 500);
+    setTimeout(notifyParentIframe, 1500);
+  }
 });

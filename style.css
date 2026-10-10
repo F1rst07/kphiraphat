@@ -99,7 +99,13 @@
    =================================================================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; font-size: 16px; background: var(--bg-parchment-base); }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background: var(--bg-parchment-base);
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeSpeed;
+}
 
 body {
   font-family: var(--font-body);
@@ -111,6 +117,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .main-wrapper {
@@ -313,6 +320,8 @@ blockquote,
   position: relative;
   overflow: hidden;
   background: var(--bg-parchment-base);
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
 }
 
 .archival-section:not(.bg-parchment-deep),
@@ -329,6 +338,7 @@ blockquote,
 }
 
 #historical-context {
+  content-visibility: visible;
   padding-top: 2.5rem;
   background: var(--bg-parchment-base);
 }
@@ -1277,6 +1287,18 @@ body.cms-admin-active .image-edit-badge {
 
 /* --- 3. Small Tablets & Large Phones (<= 768px) --- */
 @media (max-width: 768px) {
+  /* Performance Optimization for Mobile: Eliminate continuous GPU repaints */
+  .section-title-large::after,
+  .hero-meta-strip .diamond-sep,
+  .facet-pill,
+  .pedagogy-icon,
+  .photo-frame-vintage::before,
+  .flow-node-marker,
+  .flow-step-number,
+  .cms-status-indicator {
+    animation: none !important;
+  }
+
   .hero-intro-section {
     padding: 2.6rem 0 1.6rem 0;
   }

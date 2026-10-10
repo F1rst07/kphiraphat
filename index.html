@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20">
+  <link rel="stylesheet" href="style.css?v=21">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23b6862e%22 stroke-width=%222%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22/><path d=%22M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z%22/></svg>">
 </head>
 <body>
@@ -21,14 +21,21 @@
          =================================================================== -->
     <header class="hero-header-banner" id="hero-header">
       <div class="hero-banner-container">
-        <img 
-          id="hero-banner-image"
-          src="assets/images/thai_art_title_banner.png?v=2" 
-          alt="ศิลปศึกษาไทย สมัยใหม่-ร่วมสมัย" 
-          class="hero-banner-img"
-          loading="eager"
-          decoding="async"
-        >
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/images/thai_art_title_banner_m.webp?v=3" type="image/webp">
+          <source srcset="assets/images/thai_art_title_banner.webp?v=3" type="image/webp">
+          <img 
+            id="hero-banner-image"
+            src="assets/images/thai_art_title_banner.png?v=3" 
+            alt="ศิลปศึกษาไทย สมัยใหม่-ร่วมสมัย" 
+            class="hero-banner-img"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            width="1560"
+            height="780"
+          >
+        </picture>
         <button class="image-edit-badge" data-target-img="hero-banner-image" data-label="แบนเนอร์ส่วนหัว">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 20h9"></path>
@@ -349,7 +356,10 @@
                 <span>เปลี่ยนรูป</span>
               </button>
               <div class="photo-frame-vintage">
-                <img src="assets/images/silpa_bhirasri.jpg" alt="ภาพถ่ายประวัติศาสตร์ ศาสตราจารย์ศิลป์ พีระศรี" class="pioneer-real-photo" data-img-id="pioneer-silpa">
+                <picture>
+                  <source srcset="assets/images/silpa_bhirasri.webp" type="image/webp">
+                  <img src="assets/images/silpa_bhirasri.jpg" alt="ภาพถ่ายประวัติศาสตร์ ศาสตราจารย์ศิลป์ พีระศรี" class="pioneer-real-photo" data-img-id="pioneer-silpa" loading="lazy" decoding="async" width="260" height="340">
+                </picture>
               </div>
             </div>
             <div class="pioneer-text-col">
@@ -376,7 +386,10 @@
                 <span>เปลี่ยนรูป</span>
               </button>
               <div class="photo-frame-vintage">
-                <img src="assets/images/anuman_rajadhon.jpg" alt="ภาพถ่ายประวัติศาสตร์ พระยาอนุมานราชธน" class="pioneer-real-photo" data-img-id="pioneer-anuman">
+                <picture>
+                  <source srcset="assets/images/anuman_rajadhon.webp" type="image/webp">
+                  <img src="assets/images/anuman_rajadhon.jpg" alt="ภาพถ่ายประวัติศาสตร์ พระยาอนุมานราชธน" class="pioneer-real-photo" data-img-id="pioneer-anuman" loading="lazy" decoding="async" width="260" height="340">
+                </picture>
               </div>
             </div>
             <div class="pioneer-text-col">
@@ -403,7 +416,10 @@
                 <span>เปลี่ยนรูป</span>
               </button>
               <div class="photo-frame-vintage">
-                <img src="assets/images/chit_buabusaya.jpg" alt="ภาพถ่าย ศาสตราจารย์จิตร บัวบุศย์" class="pioneer-real-photo" data-img-id="pioneer-chit">
+                <picture>
+                  <source srcset="assets/images/chit_buabusaya.webp" type="image/webp">
+                  <img src="assets/images/chit_buabusaya.jpg" alt="ภาพถ่าย ศาสตราจารย์จิตร บัวบุศย์" class="pioneer-real-photo" data-img-id="pioneer-chit" loading="lazy" decoding="async" width="260" height="340">
+                </picture>
               </div>
             </div>
             <div class="pioneer-text-col">
@@ -430,7 +446,10 @@
                 <span>เปลี่ยนรูป</span>
               </button>
               <div class="photo-frame-vintage">
-                <img src="assets/images/aree_sutthipunt.jpg" alt="ภาพถ่ายจริง ศาสตราจารย์พิเศษ อารี สุทธิพันธุ์" class="pioneer-real-photo" data-img-id="pioneer-aree">
+                <picture>
+                  <source srcset="assets/images/aree_sutthipunt.webp" type="image/webp">
+                  <img src="assets/images/aree_sutthipunt.jpg" alt="ภาพถ่ายจริง ศาสตราจารย์พิเศษ อารี สุทธิพันธุ์" class="pioneer-real-photo" data-img-id="pioneer-aree" loading="lazy" decoding="async" width="260" height="340">
+                </picture>
               </div>
             </div>
             <div class="pioneer-text-col">
@@ -457,7 +476,10 @@
                 <span>เปลี่ยนรูป</span>
               </button>
               <div class="photo-frame-vintage">
-                <img src="assets/images/wiroon_tangcharoen.jpg" alt="ภาพถ่ายจริง ศาสตราจารย์ ดร.วิรุณ ตั้งเจริญ" class="pioneer-real-photo" data-img-id="pioneer-wiroon">
+                <picture>
+                  <source srcset="assets/images/wiroon_tangcharoen.webp" type="image/webp">
+                  <img src="assets/images/wiroon_tangcharoen.jpg" alt="ภาพถ่ายจริง ศาสตราจารย์ ดร.วิรุณ ตั้งเจริญ" class="pioneer-real-photo" data-img-id="pioneer-wiroon" loading="lazy" decoding="async" width="260" height="340">
+                </picture>
               </div>
             </div>
             <div class="pioneer-text-col">
@@ -484,7 +506,10 @@
                 <span>เปลี่ยนรูป</span>
               </button>
               <div class="photo-frame-vintage">
-                <img src="assets/images/poonsapya.jpg" alt="ภาพถ่ายประวัติศาสตร์จริง ท่านผู้หญิงพูนทรัพย์ นพวงศ์ ณ อยุธยา" class="pioneer-real-photo" data-img-id="pioneer-poonsapya">
+                <picture>
+                  <source srcset="assets/images/poonsapya.webp" type="image/webp">
+                  <img src="assets/images/poonsapya.jpg" alt="ภาพถ่ายประวัติศาสตร์จริง ท่านผู้หญิงพูนทรัพย์ นพวงศ์ ณ อยุธยา" class="pioneer-real-photo" data-img-id="pioneer-poonsapya" loading="lazy" decoding="async" width="260" height="340">
+                </picture>
               </div>
             </div>
             <div class="pioneer-text-col">
@@ -715,6 +740,6 @@
   <!-- Toast Notification Pop -->
   <div class="vintage-toast" id="vintageToast" role="alert"></div>
 
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=8" defer></script>
 </body>
 </html>
