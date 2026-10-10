@@ -299,7 +299,7 @@ blockquote,
 .hero-banner-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1920 / 880;
   display: block;
   object-fit: cover;
 }
