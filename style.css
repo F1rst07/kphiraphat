@@ -85,7 +85,7 @@
   --radius-md: 14px;
   --radius-lg: 22px;
   --radius-xl: 32px;
-  --max-width:  1400px;
+  --max-width:  1680px;
 
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -109,10 +109,10 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 24px;
+  font-size: 28px;
   background: var(--bg-parchment-base);
   color: var(--ink-secondary);
-  line-height: 1.82;
+  line-height: 1.84;
   letter-spacing: 0.012em;
   min-height: 100vh;
   overflow-x: hidden;
@@ -131,7 +131,7 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
 /* ===================================================================
@@ -155,8 +155,8 @@ p, li, .ref-item,
 .highlight-quote-body,
 .dimension-highlight-strip {
   font-family: var(--font-body);
-  font-size: 24px !important;
-  line-height: 1.82;
+  font-size: 28px !important;
+  line-height: 1.84;
 }
 
 strong, b { font-weight: 700; }
@@ -169,7 +169,7 @@ p, .legacy-paragraph, .hero-intro-paragraph, .purpose-lead-text {
 p:last-child { margin-bottom: 0; }
 
 .lead-paragraph {
-  font-size: 26px !important;
+  font-size: 31px !important;
   line-height: 1.88;
   color: var(--ink-primary);
   text-indent: 2.5rem;
@@ -178,6 +178,7 @@ p:last-child { margin-bottom: 0; }
 .photo-caption-vintage,
 .banner-quote-text,
 .highlight-quote-body,
+.blockquote,
 blockquote,
 .dimension-highlight-strip,
 .section-caption,
@@ -186,7 +187,7 @@ blockquote,
 .modal-body p { text-indent: 0 !important; }
 
 .citation-tag {
-  font-size: 19px !important;
+  font-size: 22px !important;
   color: var(--terra-mid);
   font-weight: 700;
 }
@@ -357,14 +358,14 @@ blockquote,
 
 .section-heading-wrap {
   text-align: center;
-  max-width: 900px;
+  max-width: 1280px;
   margin: 0 auto 3.6rem;
 }
 
 .section-label {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -374,7 +375,7 @@ blockquote,
 }
 
 .section-title-large {
-  font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
   font-weight: 700;
   color: var(--ink-primary);
   letter-spacing: 0.018em;
@@ -397,7 +398,7 @@ blockquote,
 
 .section-caption {
   font-family: var(--font-body);
-  font-size: 22px !important;
+  font-size: 26px !important;
   color: var(--ink-muted);
   margin-top: 0.6rem;
   line-height: 1.7;
@@ -475,7 +476,7 @@ blockquote,
   animation: floatSubtle 4.2s ease-in-out infinite;
 }
 .dimension-card-header h3 {
-  font-size: 1.95rem;
+  font-size: 2.25rem;
   color: var(--ink-primary);
   font-weight: 700;
 }
@@ -487,10 +488,10 @@ blockquote,
   background: linear-gradient(135deg, rgba(212,168,50,0.1) 0%, rgba(184,133,28,0.06) 100%);
   border: 1px solid var(--border-gold);
   border-left: 4px solid var(--gold-mid);
-  padding: 1.25rem 1.75rem;
+  padding: 1.35rem 1.85rem;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   color: var(--ink-primary);
-  font-size: 23px !important;
+  font-size: 27px !important;
   line-height: 1.85;
 }
 
@@ -556,7 +557,7 @@ blockquote,
 
 .philosophy-quote-frame blockquote {
   font-family: var(--font-body);
-  font-size: 1.62rem;
+  font-size: 1.85rem;
   line-height: 1.95;
   color: #F0E8D5;
   font-weight: 500;
@@ -595,7 +596,7 @@ blockquote,
   border-color: var(--border-gold);
 }
 .philo-text-card h4 {
-  font-size: 1.7rem;
+  font-size: 1.95rem;
   margin-bottom: 1.2rem;
   color: var(--ink-primary);
   padding-bottom: 0.6rem;
@@ -619,7 +620,7 @@ blockquote,
   box-shadow: var(--shadow-md), var(--shadow-inset);
 }
 .purpose-lead-text {
-  font-size: 25px !important;
+  font-size: 29px !important;
   line-height: 1.85;
   color: var(--ink-primary);
   margin-bottom: 2.4rem;
@@ -636,7 +637,7 @@ blockquote,
   border-radius: 40px;
   padding: 0.55rem 1.5rem;
   font-family: var(--font-body);
-  font-size: 22px !important;
+  font-size: 24px !important;
   font-weight: 700;
   color: var(--ink-primary);
   box-shadow: 0 3px 10px rgba(44,28,12,0.08), var(--shadow-inset);
@@ -699,7 +700,7 @@ blockquote,
   box-shadow: var(--shadow-md);
   border-color: var(--border-gold);
 }
-.purpose-card h4 { font-size: 1.65rem; margin-bottom: 1rem; color: var(--ink-primary); }
+.purpose-card h4 { font-size: 1.9rem; margin-bottom: 1rem; color: var(--ink-primary); }
 .purpose-card.highlight {
   background: linear-gradient(160deg, #2B1C12 0%, #180F09 100%);
   color: #F2E8D2;
@@ -712,7 +713,7 @@ blockquote,
 .purpose-card.highlight h4 { color: var(--gold-bright); }
 .highlight-quote-body {
   font-family: var(--font-body);
-  font-size: 23.5px !important;
+  font-size: 27px !important;
   line-height: 1.9;
   color: #E8D9BC;
 }
@@ -787,7 +788,7 @@ blockquote,
 .pedagogy-card:nth-child(4) .pedagogy-icon { animation-delay: 2.4s; }
 
 .pedagogy-card h4 {
-  font-size: 1.7rem;
+  font-size: 1.95rem;
   margin-bottom: 1rem;
   color: var(--ink-primary);
   border-bottom: 1px solid var(--border-hairline);
@@ -878,14 +879,14 @@ blockquote,
 .pioneer-full-card:hover .pioneer-real-photo { transform: scale(1.06); }
 .photo-caption-vintage {
   font-family: var(--font-body);
-  font-size: 19px !important;
+  font-size: 22px !important;
   color: var(--ink-muted);
   text-align: center;
   margin-top: 0.6rem;
 }
 .pioneer-text-col { display: flex; flex-direction: column; }
 .pioneer-full-name {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   color: var(--ink-primary);
   margin-bottom: 1.3rem;
   padding-bottom: 0.75rem;
@@ -921,7 +922,7 @@ blockquote,
   transition: var(--tr-base);
 }
 .legacy-deep-card:hover { box-shadow: var(--shadow-lg); border-color: var(--border-gold); }
-.legacy-paragraph { font-size: 24px !important; line-height: 1.82; margin-bottom: 1.4rem; color: var(--ink-primary); }
+.legacy-paragraph { font-size: 28px !important; line-height: 1.84; margin-bottom: 1.4rem; color: var(--ink-primary); }
 .legacy-core-banner {
   margin-top: 2.5rem;
   background: linear-gradient(160deg, #28190F 0%, #160E06 100%);
@@ -975,7 +976,7 @@ blockquote,
 }
 .references-official-list { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; }
 .ref-item {
-  font-size: 22px !important;
+  font-size: 26px !important;
   line-height: 1.85;
   color: var(--ink-secondary);
   border-left: 3.5px solid var(--gold-mid);
@@ -1322,7 +1323,7 @@ body.cms-admin-active .image-edit-badge {
     font-size: clamp(1.85rem, 5.2vw, 2.5rem);
   }
   .section-caption {
-    font-size: 20px !important;
+    font-size: 23px !important;
   }
 
   /* Dimension Cards */
@@ -1337,7 +1338,7 @@ body.cms-admin-active .image-edit-badge {
     gap: 1rem;
   }
   .dimension-card-header h3 {
-    font-size: 1.65rem;
+    font-size: 1.85rem;
   }
   .dimension-card-content {
     padding: 1.25rem 1.4rem 1.6rem;
@@ -1345,7 +1346,7 @@ body.cms-admin-active .image-edit-badge {
   .dimension-highlight-strip {
     margin-top: 1.25rem;
     padding: 1.1rem 1.25rem;
-    font-size: 21px !important;
+    font-size: 24px !important;
   }
 
   /* Philosophy */
@@ -1355,7 +1356,7 @@ body.cms-admin-active .image-edit-badge {
     margin-bottom: 2rem;
   }
   .philosophy-quote-frame blockquote {
-    font-size: 1.45rem;
+    font-size: 1.65rem;
     line-height: 1.85;
   }
   .quote-symbol {
@@ -1366,7 +1367,7 @@ body.cms-admin-active .image-edit-badge {
     border-radius: var(--radius-sm);
   }
   .philo-text-card h4 {
-    font-size: 1.55rem;
+    font-size: 1.75rem;
   }
 
   /* Purpose */
@@ -1375,7 +1376,7 @@ body.cms-admin-active .image-edit-badge {
     border-radius: var(--radius-sm);
   }
   .purpose-lead-text {
-    font-size: 22.5px !important;
+    font-size: 26px !important;
     line-height: 1.8;
     margin-bottom: 2rem;
   }
@@ -1383,10 +1384,10 @@ body.cms-admin-active .image-edit-badge {
     padding: 1.8rem 1.5rem;
   }
   .purpose-card h4 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
   .highlight-quote-body {
-    font-size: 21.5px !important;
+    font-size: 24.5px !important;
   }
 
   /* Pedagogy */
@@ -1395,7 +1396,7 @@ body.cms-admin-active .image-edit-badge {
     border-radius: var(--radius-sm);
   }
   .pedagogy-card h4 {
-    font-size: 1.55rem;
+    font-size: 1.75rem;
   }
   .pedagogy-icon {
     width: 54px;
@@ -1423,13 +1424,13 @@ body.cms-admin-active .image-edit-badge {
     width: 100%;
   }
   .pioneer-full-name {
-    font-size: 2rem;
+    font-size: 2.25rem;
     text-align: center;
     padding-bottom: 0.65rem;
     margin-bottom: 1.1rem;
   }
   .photo-caption-vintage {
-    font-size: 18px !important;
+    font-size: 20px !important;
   }
 
   /* Legacy & References */
@@ -1443,11 +1444,11 @@ body.cms-admin-active .image-edit-badge {
     border-radius: var(--radius-sm);
   }
   .banner-sub-tag {
-    font-size: 26px !important;
+    font-size: 28px !important;
     margin-bottom: 1rem;
   }
   .banner-quote-text {
-    font-size: 23px !important;
+    font-size: 25px !important;
     line-height: 1.88;
   }
   .references-archive-box {
@@ -1455,7 +1456,7 @@ body.cms-admin-active .image-edit-badge {
     border-radius: var(--radius-sm);
   }
   .ref-item {
-    font-size: 20px !important;
+    font-size: 23px !important;
     line-height: 1.78;
     padding-left: 1.1rem;
   }
@@ -1515,13 +1516,13 @@ body.cms-admin-active .image-edit-badge {
     margin-top: 0.5rem;
   }
   .section-caption {
-    font-size: 19px !important;
+    font-size: 22px !important;
     line-height: 1.6;
   }
 
   /* General Typography on Mobile */
   body {
-    font-size: 21px;
+    font-size: 24px;
   }
   p, li, .ref-item,
   .dimension-card-content p,
@@ -1532,14 +1533,14 @@ body.cms-admin-active .image-edit-badge {
   .purpose-lead-text,
   .highlight-quote-body,
   .dimension-highlight-strip {
-    font-size: 21px !important;
-    line-height: 1.74;
+    font-size: 24px !important;
+    line-height: 1.78;
   }
   p, .legacy-paragraph, .hero-intro-paragraph, .purpose-lead-text {
     text-indent: 1.6rem;
   }
   .lead-paragraph {
-    font-size: 22px !important;
+    font-size: 26px !important;
     text-indent: 1.6rem;
   }
 
@@ -1565,8 +1566,8 @@ body.cms-admin-active .image-edit-badge {
   }
   .dimension-highlight-strip {
     padding: 1rem 1.1rem;
-    font-size: 20px !important;
-    line-height: 1.74;
+    font-size: 23px !important;
+    line-height: 1.76;
     border-left-width: 3px;
   }
 
@@ -1764,8 +1765,8 @@ body.cms-admin-active .image-edit-badge {
   .purpose-lead-text,
   .highlight-quote-body,
   .dimension-highlight-strip {
-    font-size: 19.5px !important;
-    line-height: 1.68;
+    font-size: 21.5px !important;
+    line-height: 1.7;
   }
   p, .legacy-paragraph, .hero-intro-paragraph, .purpose-lead-text {
     text-indent: 1.2rem;
