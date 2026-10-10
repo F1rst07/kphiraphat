@@ -260,6 +260,60 @@ blockquote,
 }
 
 /* ===================================================================
+   HERO HEADER BANNER & INTRODUCTION (แบนเนอร์หัวเรื่องและบทนำ)
+   =================================================================== */
+
+.hero-header-banner {
+  width: 100%;
+  background: #18100A;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(10, 6, 3, 0.28);
+  border-bottom: 2px solid var(--border-gold);
+}
+
+.hero-banner-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 480px;
+  object-fit: cover;
+}
+
+.hero-intro-section {
+  padding: 4rem 0 2.5rem 0;
+  background: var(--bg-parchment-base);
+  position: relative;
+}
+
+.hero-intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.hero-intro-paragraph {
+  font-family: var(--font-body);
+  font-size: 24px !important;
+  line-height: 1.86;
+  color: var(--ink-primary);
+  text-indent: 2.8rem;
+  text-align: justify;
+  text-justify: inter-cluster;
+  margin-bottom: 0;
+}
+
+/* ===================================================================
    SECTION SYSTEM
    =================================================================== */
 
@@ -284,7 +338,7 @@ blockquote,
 }
 
 #historical-context {
-  padding-top: 0;
+  padding-top: 2.5rem;
   background: var(--bg-parchment-base);
 }
 #historical-context::before { display: none; }
@@ -1202,6 +1256,9 @@ body.cms-admin-active .image-edit-badge {
 
 /* --- 2. Medium Tablets & Small Laptops (<= 1000px) --- */
 @media (max-width: 1000px) {
+  .hero-intro-section {
+    padding: 3.2rem 0 2rem 0;
+  }
   .archival-section {
     padding: 4.2rem 0;
   }
@@ -1229,6 +1286,14 @@ body.cms-admin-active .image-edit-badge {
 
 /* --- 3. Small Tablets & Large Phones (<= 768px) --- */
 @media (max-width: 768px) {
+  .hero-intro-section {
+    padding: 2.6rem 0 1.6rem 0;
+  }
+  .hero-intro-paragraph {
+    font-size: 22px !important;
+    line-height: 1.82;
+    text-indent: 2rem;
+  }
   .archival-section {
     padding: 3.5rem 0;
   }
@@ -1409,6 +1474,14 @@ body.cms-admin-active .image-edit-badge {
 
 /* --- 4. Mobile Phones (<= 480px) --- */
 @media (max-width: 480px) {
+  .hero-intro-section {
+    padding: 2rem 0 1.2rem 0;
+  }
+  .hero-intro-paragraph {
+    font-size: 20px !important;
+    line-height: 1.76;
+    text-indent: 1.5rem;
+  }
   .archival-section {
     padding: 2.6rem 0;
   }

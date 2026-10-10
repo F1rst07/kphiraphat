@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23b6862e%22 stroke-width=%222%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22/><path d=%22M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z%22/></svg>">
 </head>
 <body>
@@ -17,12 +17,50 @@
   <main class="main-wrapper">
 
     <!-- ===================================================================
+         HERO HEADER BANNER & INTRODUCTION (แบนเนอร์หัวเรื่องและบทนำ)
+         =================================================================== -->
+    <header class="hero-header-banner" id="hero-header">
+      <div class="hero-banner-container">
+        <img 
+          id="hero-banner-image"
+          src="assets/images/hero_banner_2x.png" 
+          alt="ศิลปศึกษาไทย สมัยใหม่-ร่วมสมัย" 
+          class="hero-banner-img"
+          loading="eager"
+          decoding="async"
+        >
+        <button class="image-edit-badge" data-target-img="hero-banner-image" data-label="แบนเนอร์ส่วนหัว">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          เปลี่ยนรูปแบนเนอร์
+        </button>
+      </div>
+    </header>
+
+    <section class="hero-intro-section" id="introduction">
+      <div class="container">
+        <div class="hero-intro-content">
+          <p class="hero-intro-paragraph" data-editable="true" data-editable-id="intro-p1">
+            ศิลปศึกษาไทยในช่วงสมัยใหม่-ร่วมสมัยเป็นช่วงเวลาที่การศึกษาด้านศิลปะของไทยเกิดการเปลี่ยนแปลงอย่างต่อเนื่อง จากเดิมที่การเรียนรู้ศิลปะมักมีลักษณะเป็นการถ่ายทอดทักษะและความรู้ด้านงานช่าง สู่การจัดการศึกษาศิลปะอย่างเป็นระบบมากขึ้นภายในสถาบันการศึกษา การเปลี่ยนแปลงดังกล่าวมีความสัมพันธ์กับพัฒนาการของสังคมไทย การปฏิรูปการศึกษา และแนวคิดทางศิลปศึกษาที่ให้ความสำคัญกับผู้เรียนและกระบวนการเรียนรู้มากขึ้น (วิรุณ ตั้งเจริญ, 2548)
+          </p>
+          <p class="hero-intro-paragraph" data-editable="true" data-editable-id="intro-p2">
+            สถาบันอุดมศึกษามีบทบาทสำคัญต่อพัฒนาการดังกล่าว โดยเฉพาะจุฬาลงกรณ์มหาวิทยาลัย ซึ่งมีบทบาทด้านการผลิตครูและบุคลากรทางการศึกษา รวมถึงการพัฒนาองค์ความรู้ด้านศิลปศึกษาในระดับอุดมศึกษา การศึกษาศิลปศึกษาจึงค่อย ๆ เปลี่ยนจากการเน้นการฝึกทักษะทางศิลปะไปสู่การบูรณาการระหว่าง ศิลปะ การศึกษา จิตวิทยาการเรียนรู้ สังคม และวัฒนธรรม
+          </p>
+          <p class="hero-intro-paragraph" data-editable="true" data-editable-id="intro-p3">
+            พัฒนาการของศิลปศึกษาไทยยังสะท้อนให้เห็นผ่านการจัดตั้งสถาบันการศึกษาด้านศิลปะและการกำหนดให้ศิลปะเป็นส่วนหนึ่งของหลักสูตรการศึกษาขั้นพื้นฐาน โดยการเรียนศิลปะไม่ได้มีเป้าหมายเพียงเพื่อฝึกทักษะในการสร้างผลงานเท่านั้น แต่ยังเกี่ยวข้องกับการพัฒนาความคิดสร้างสรรค์ จินตนาการ สุนทรียภาพ และคุณภาพชีวิตของผู้เรียน (กระทรวงศึกษาธิการ, 2551)
+          </p>
+        </div>
+
+        <div class="ornament-rule" style="margin-top: 3.5rem;"><span class="ornament-diamond"></span></div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
          SECTION 1: HISTORICAL CONTEXT (บริบททางประวัติศาสตร์)
          =================================================================== -->
     <section class="archival-section bg-parchment-deep" id="historical-context">
-      <!-- Top Page Spacer (พื้นที่ว่างส่วนหัว) -->
-      <div class="top-page-spacer" aria-hidden="true"></div>
-
       <div class="container">
         
         <div class="section-heading-wrap">
