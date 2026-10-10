@@ -85,7 +85,7 @@
   --radius-md: 14px;
   --radius-lg: 22px;
   --radius-xl: 32px;
-  --max-width:  1160px;
+  --max-width:  1400px;
 
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -124,7 +124,7 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 /* ===================================================================
@@ -441,7 +441,7 @@ blockquote,
   color: #F8F2E4;
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
-  padding: 3.5rem 4rem;
+  padding: 2.8rem 2.4rem;
   margin-bottom: 2.8rem;
   position: relative;
   overflow: hidden;
@@ -854,19 +854,19 @@ blockquote,
   background: var(--bg-surface);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-md);
-  padding: 3.2rem;
+  padding: 2.8rem 2.2rem;
   box-shadow: var(--shadow-md), var(--shadow-inset);
   transition: var(--tr-base);
 }
 .legacy-deep-card:hover { box-shadow: var(--shadow-lg); border-color: var(--border-gold); }
-.legacy-paragraph { font-size: 24px !important; line-height: 1.82; margin-bottom: 0; color: var(--ink-primary); }
+.legacy-paragraph { font-size: 24px !important; line-height: 1.82; margin-bottom: 1.4rem; color: var(--ink-primary); }
 .legacy-core-banner {
-  margin-top: 2.8rem;
+  margin-top: 2.5rem;
   background: linear-gradient(160deg, #28190F 0%, #160E06 100%);
   color: #F5EDD8;
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
-  padding: 3rem 3.4rem;
+  padding: 2.6rem 2.2rem;
   box-shadow: var(--shadow-md), 0 0 35px rgba(212,168,50,0.18);
   transition: var(--tr-base);
   position: relative;
@@ -880,22 +880,23 @@ blockquote,
 }
 .legacy-core-banner:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg), var(--shadow-glow); }
 .banner-sub-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   color: var(--gold-bright);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: clamp(28px, 2.5vw, 34px) !important;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 12px rgba(212,168,50,0.55);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 0 16px rgba(212,168,50,0.65);
 }
 .banner-quote-text {
   font-family: var(--font-body);
-  font-size: 1.62rem;
-  line-height: 2;
+  font-size: clamp(24px, 2.2vw, 28px) !important;
+  line-height: 1.95;
   color: #EDE0C2;
-  font-weight: 600;
+  font-weight: 500;
   text-align: left;
 }
 
@@ -907,7 +908,7 @@ blockquote,
   background: var(--bg-surface);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-md);
-  padding: 2.8rem;
+  padding: 2.4rem 2rem;
   box-shadow: var(--shadow-md), var(--shadow-inset);
 }
 .references-official-list { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; }
@@ -1357,12 +1358,16 @@ body.cms-admin-active .image-edit-badge {
     border-radius: var(--radius-sm);
   }
   .legacy-core-banner {
-    padding: 2.2rem 1.6rem;
-    margin-top: 2rem;
+    padding: 2rem 1.6rem;
+    margin-top: 1.8rem;
     border-radius: var(--radius-sm);
   }
+  .banner-sub-tag {
+    font-size: 26px !important;
+    margin-bottom: 1rem;
+  }
   .banner-quote-text {
-    font-size: 1.45rem;
+    font-size: 23px !important;
     line-height: 1.88;
   }
   .references-archive-box {
@@ -1563,19 +1568,19 @@ body.cms-admin-active .image-edit-badge {
 
   /* Legacy & References */
   .legacy-deep-card {
-    padding: 1.6rem 1.2rem;
+    padding: 1.5rem 1.1rem;
   }
   .legacy-core-banner {
-    padding: 1.6rem 1.2rem;
-    margin-top: 1.5rem;
+    padding: 1.5rem 1.1rem;
+    margin-top: 1.4rem;
   }
   .banner-sub-tag {
-    font-size: 13px;
+    font-size: 22px !important;
     margin-bottom: 0.7rem;
   }
   .banner-quote-text {
-    font-size: 1.28rem;
-    line-height: 1.82;
+    font-size: 20px !important;
+    line-height: 1.8;
   }
   .references-archive-box {
     padding: 1.5rem 1.2rem;
