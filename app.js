@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const STORAGE_KEY = 'thai_art_education_cms_v5';
+  const STORAGE_KEY = 'thai_art_education_cms_v6';
   let isEditMode = false;
   let currentTargetImageId = null;
   let originalDefaultState = {};
@@ -169,6 +169,34 @@ document.addEventListener('DOMContentLoaded', () => {
   /* -----------------------------------------------------------
      STATE MANAGEMENT & LOCAL STORAGE
      ----------------------------------------------------------- */
+  /* -----------------------------------------------------------
+     PICTURE & SOURCE SYNCHRONIZATION HELPERS
+     ----------------------------------------------------------- */
+  function updatePictureSources(img, newSrc) {
+    if (!img) return;
+    if (img.parentElement && img.parentElement.tagName === 'PICTURE') {
+      img.parentElement.querySelectorAll('source').forEach(source => {
+        source.srcset = newSrc;
+      });
+    }
+  }
+
+  function restorePictureSources(img) {
+    if (!img) return;
+    const id = img.getAttribute('data-img-id');
+    if (img.parentElement && img.parentElement.tagName === 'PICTURE' && originalDefaultState.pictureSources && originalDefaultState.pictureSources[id]) {
+      const sources = img.parentElement.querySelectorAll('source');
+      originalDefaultState.pictureSources[id].forEach((orig, idx) => {
+        if (sources[idx]) {
+          sources[idx].srcset = orig.srcset;
+        }
+      });
+    }
+  }
+
+  /* -----------------------------------------------------------
+     STATE MANAGEMENT & LOCAL STORAGE
+     ----------------------------------------------------------- */
   function captureDefaultState() {
     const textData = {};
     document.querySelectorAll('[data-editable-id]').forEach(el => {
@@ -176,11 +204,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const imageData = {};
+    const pictureSources = {};
     document.querySelectorAll('[data-img-id]').forEach(img => {
-      imageData[img.getAttribute('data-img-id')] = img.getAttribute('src');
+      const id = img.getAttribute('data-img-id');
+      imageData[id] = img.getAttribute('src');
+      if (img.parentElement && img.parentElement.tagName === 'PICTURE') {
+        pictureSources[id] = Array.from(img.parentElement.querySelectorAll('source')).map(s => ({
+          media: s.getAttribute('media'),
+          type: s.getAttribute('type'),
+          srcset: s.getAttribute('srcset')
+        }));
+      }
     });
 
-    originalDefaultState = { textData, imageData };
+    originalDefaultState = { textData, imageData, pictureSources };
   }
 
   function getCurrentState() {
@@ -189,9 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
       textData[el.getAttribute('data-editable-id')] = el.innerHTML;
     });
 
+    // Only persist custom edited base64 or blob images to localStorage
+    // Default static file paths should always follow the latest project code
     const imageData = {};
     document.querySelectorAll('[data-img-id]').forEach(img => {
-      imageData[img.getAttribute('data-img-id')] = img.getAttribute('src');
+      const src = img.getAttribute('src');
+      if (src && (src.startsWith('data:image/') || src.startsWith('blob:'))) {
+        imageData[img.getAttribute('data-img-id')] = src;
+      }
     });
 
     return {
@@ -214,30 +256,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function loadSavedState() {
     try {
+      // Clear out obsolete cache keys to remove old stale static banners
+      const obsoleteKeys = ['thai_art_education_cms_v5', 'thai_art_education_cms_v4', 'thai_art_education_cms_v3'];
+      obsoleteKeys.forEach(k => {
+        try { localStorage.removeItem(k); } catch (e) {}
+      });
+
       let raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) {
-        // Migrate image data only from previous versions so user's cropped photos are preserved
-        // but text content takes the latest fixed HTML
-        const prevKeys = ['thai_art_education_cms_v4', 'thai_art_education_cms_v3'];
-        for (const pk of prevKeys) {
-          const oldRaw = localStorage.getItem(pk);
-          if (oldRaw) {
-            try {
-              const oldState = JSON.parse(oldRaw);
-              if (oldState.imageData) {
-                const migrated = {
-                  timestamp: new Date().toISOString(),
-                  textData: {},
-                  imageData: oldState.imageData
-                };
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
-                raw = JSON.stringify(migrated);
-                break;
-              }
-            } catch (err) {}
-          }
-        }
-      }
       if (!raw) return;
       const state = JSON.parse(raw);
       applyStateToDOM(state);
@@ -261,13 +286,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (state.imageData) {
       Object.entries(state.imageData).forEach(([id, src]) => {
         const img = document.querySelector(`[data-img-id="${id}"]`);
-        if (img) img.src = src;
+        if (img && src && (src.startsWith('data:image/') || src.startsWith('blob:'))) {
+          img.src = src;
+          updatePictureSources(img, src);
+        }
       });
     }
   }
 
   function restoreDefaultState() {
     applyStateToDOM(originalDefaultState);
+    document.querySelectorAll('[data-img-id]').forEach(img => {
+      restorePictureSources(img);
+    });
   }
 
   function exportStateAsJson() {
@@ -503,11 +534,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const croppedUrl = canvas.toDataURL('image/jpeg', 0.92);
       targetImg.src = croppedUrl;
+      updatePictureSources(targetImg, croppedUrl);
       saveStateToLocalStorage();
       showToast('ครอบตัดและเปลี่ยนรูปภาพเรียบร้อยแล้ว!');
     } catch (err) {
       console.warn('Canvas export fallback (likely cross-origin image):', err);
       targetImg.src = modalPreviewImg.src;
+      updatePictureSources(targetImg, modalPreviewImg.src);
       saveStateToLocalStorage();
       showToast('เปลี่ยนรูปภาพเรียบร้อยแล้ว!');
     }
@@ -522,6 +555,12 @@ document.addEventListener('DOMContentLoaded', () => {
       modalPreviewImg.src = defaultSrc;
       modalImageUrlInput.value = defaultSrc;
       resetCropState();
+      const targetImg = document.querySelector(`[data-img-id="${currentTargetImageId}"]`);
+      if (targetImg) {
+        targetImg.src = defaultSrc;
+        restorePictureSources(targetImg);
+        saveStateToLocalStorage();
+      }
     }
   }
 
